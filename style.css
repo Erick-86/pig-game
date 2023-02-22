@@ -104,13 +104,13 @@ main .game-container .player-container {
 }
 
 .new-game-btn{
-    top: 1rem;
+    top: 3rem;
 }
 
 .roll-dice{
-    bottom: 9rem;
+    bottom: 10.2rem;
 }
 
 .hold-btn{
-    bottom: 4.5rem;
+    bottom: 5.6rem;
 }
