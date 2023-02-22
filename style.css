@@ -81,6 +81,14 @@ main .game-container .player-container {
   font-size: 3rem;
 }
 
+.dice{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 9rem;
+    transform: translate(-50%);
+}
 
 .game-btns {
     position: absolute;
