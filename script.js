@@ -1,7 +1,9 @@
 const rollDiceBtn = document.querySelector(".roll-dice");
 const holdBtn = document.querySelector(".hold-btn");
 const newGameBtn = document.querySelector(".new-game-btn");
-const playerScore = document.querySelectorAll(".player-score");
+
+const playe1rScore = document.getElementById("player--0");
+const playe2rScore = document.getElementById("player--1");
 
 //Selcting player elements
 const player1El = document.querySelector(".player-0");
@@ -10,11 +12,9 @@ const player2El = document.querySelector(".player-1");
 //Selecting Player id
 const player1 = document.getElementById("player--0--currents-score");
 const player2 = document.getElementById("player--1--currents-score");
-console.log(player1, player2);
 
 // Selecting the dice element and setting display to none (hidden)
 const dice = document.querySelector(".dice");
-dice.style.display = "none";
 
 // Selecting the player current scores
 const player1CurrentScore = document.getElementById(
@@ -24,20 +24,34 @@ const player2CurrentScore = document.getElementById(
   "player--1--currents-score"
 );
 
-// Setting the player current score to 0
-player1CurrentScore.textContent = 0;
-player2CurrentScore.textContent = 0;
+const gameInit = () => {
+  // Setting the player current score to 0
+  player1CurrentScore.textContent = 0;
+  player2CurrentScore.textContent = 0;
 
-//Roll Dice Functionality
-let currentScore = 0;
+  playe1rScore.textContent = 0;
+  playe2rScore.textContent = 0;
+  player1El.classList.remove("winner");
+  player2El.classList.remove("winner");
+  player1El.classList.add("active-player");
+  player2El.classList.remove("active-player");
 
-//Storing the scores
-const scores = [0, 0];
+  //hidind the dice
+  dice.style.display = "none";
 
-//Selecting active player
-let activePlayer = 0;
+  //Roll Dice Functionality
+  currentScore = 0;
 
-let playing = true;
+  //Storing the scores
+  scores = [0, 0];
+
+  //Selecting active player
+  activePlayer = 0;
+
+  playing = true;
+};
+//Calling gameInit function when the page is reloaded
+gameInit();
 
 //Switching Player Function
 const switchPlayer = function () {
@@ -82,7 +96,7 @@ holdBtn.addEventListener("click", () => {
       scores[activePlayer];
 
     //If the active player's score is at least 100, the player wins
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 100) {
       playing = false;
 
       //Hiding the dice when a player wins
@@ -98,4 +112,11 @@ holdBtn.addEventListener("click", () => {
       switchPlayer();
     }
   }
+});
+
+//NEW GAME FUNCTIONALITY
+//When new game btn is clicked, all values will be set to the initial values
+newGameBtn.addEventListener("click", () => {
+  //Calling gameInit function when the new game btn is clicked
+  gameInit();
 });
